@@ -46,7 +46,7 @@
                         </td>
                         <td>
                             <a class="btn btn-primary btn-sm" href="@Url.Action("Editar", "Mantenedor", new { idcontacto = item.IdContacto })" >Editar</a>
-                            <a class="btn btn-danger btn-sm" href="" >Eliminar</a>
+                            <a class="btn btn-danger btn-sm" href="@Url.Action("Eliminar", "Mantenedor", new { idcontacto = item.IdContacto })" >Eliminar</a>
                         </td>
                     </tr>
                 }

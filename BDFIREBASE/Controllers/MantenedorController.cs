@@ -43,6 +43,12 @@ namespace BDFIREBASE.Controllers
 
             List<Contacto> listaContacto = new List<Contacto>();
 
+            if (lista == null)
+            {
+                listaContacto = new List<Contacto>();
+                return View(listaContacto);
+            }
+
             foreach (KeyValuePair<string, Contacto> elemento in lista)
             {
                 listaContacto.Add(new Contacto()
@@ -70,9 +76,11 @@ namespace BDFIREBASE.Controllers
             return View(ocontacto);
         }
 
-        public ActionResult Eliminar()
+        public ActionResult Eliminar(string idcontacto)
         {
-            return View();
+            FirebaseResponse response = cliente.Delete("contactos/" + idcontacto);
+
+            return RedirectToAction("Inicio", "Mantenedor");
         }
 
         [HttpPost]
@@ -84,7 +92,7 @@ namespace BDFIREBASE.Controllers
 
             if(response.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                return View();
+                return RedirectToAction("Inicio", "Mantenedor");
             } 
             else 
             { 
